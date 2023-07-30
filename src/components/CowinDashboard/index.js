@@ -27,7 +27,7 @@ class CowinDashboard extends Component {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const vaccinationDataApiUrl = 'https://apis.ccbp.in/covid-vaccination-data'
     const response = await fetch(vaccinationDataApiUrl) // default method is GET
-    if (response.ok === true) {
+    try {
       const data = await response.json()
       const formattedData = {
         last7DaysVaccination: data.last_7_days_vaccination,
@@ -38,7 +38,7 @@ class CowinDashboard extends Component {
         covidVaccinationData: formattedData,
         apiStatus: apiStatusConstants.success,
       })
-    } else {
+    } catch (error) {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
