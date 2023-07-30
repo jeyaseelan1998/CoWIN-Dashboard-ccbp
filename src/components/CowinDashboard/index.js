@@ -25,9 +25,9 @@ class CowinDashboard extends Component {
 
   getCovidVaccinationData = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
-    const apiUrl = 'https://apis.ccbp.in/covid-vaccination-data'
+    const vaccinationDataApiUrl = 'https://apis.ccbp.in/covid-vaccination-data'
     try {
-      const response = await fetch(apiUrl) // default method is GET
+      const response = await fetch(vaccinationDataApiUrl) // default method is GET
       const data = await response.json()
       const formattedData = {
         last7DaysVaccination: data.last_7_days_vaccination,
@@ -84,10 +84,8 @@ class CowinDashboard extends Component {
         return this.renderFailureView()
       case apiStatusConstants.success:
         return this.renderSuccessView()
-      case apiStatusConstants.inProgress:
-        return this.renderLoadingView()
       default:
-        return null
+        return this.renderLoadingView()
     }
   }
 
@@ -102,7 +100,7 @@ class CowinDashboard extends Component {
           />
           <h1 className="logo-title">Co-Win</h1>
         </header>
-        <h1 className="main-heading">CoWlN Vaccination in India</h1>
+        <h1 className="main-heading">CoWIN Vaccination in India</h1>
         {this.renderCovinDashboardViews()}
       </div>
     )

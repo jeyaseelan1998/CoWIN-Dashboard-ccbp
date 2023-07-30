@@ -1,4 +1,5 @@
-import {Bar, BarChart, Legend, XAxis, YAxis} from 'recharts'
+// import {Bar, BarChart, Legend, XAxis, YAxis} from 'recharts'
+import {BarChart, Bar, Legend, XAxis, YAxis} from 'recharts'
 import './index.css'
 
 const VaccinationCoverage = props => {
